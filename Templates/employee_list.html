@@ -10,35 +10,31 @@
             + Add Employee
         </a>
     </div>
-
-    {% if employees %}
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
-            {% for employee in employees %}
-                <div style="background: #f8f9fa; border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); padding: 20px; transition: transform 0.2s ease;">
-                    <h3 style="margin-bottom: 10px; font-size: 20px; color: #34495e;">
-                        <a href="{% url 'employee_detail' employee.pk %}"
-                           style="text-decoration: none; color: inherit;">
-                            {{ employee.first_name }} {{ employee.last_name }}
-                        </a>
-                    </h3>
-                    <div style="margin-top: 15px; display: flex; justify-content: space-between;">
-                        <a href="{% url 'employee_update' employee.pk %}"
-                           style="color: #2980b9; text-decoration: none; font-size: 14px; border: 1px solid #2980b9; padding: 5px 10px; border-radius: 5px;">
-                            Edit
-                        </a>
-                        <a href="{% url 'employee_delete' employee.pk %}"
-                           style="color: #e74c3c; text-decoration: none; font-size: 14px; border: 1px solid #e74c3c; padding: 5px 10px; border-radius: 5px;">
-                            Delete
-                        </a>
-                    </div>
+    <a href="{% url 'employee_create' %}"
+       style="display: inline-block; margin-bottom: 20px; padding: 10px 20px; background-color: #3498db; color: white; text-decoration: none; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+       + Add Employee
+    </a>
+    <ul style="list-style-type: none; padding: 0;">
+        {% for employee in employees %}
+            <li style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ecf0f1;">
+                <div style="flex: 1;">
+                    <a href="{% url 'employee_detail' employee.pk %}" style="color: #2980b9; text-decoration: none; font-size: 18px;">
+                        {{ employee.first_name }} {{ employee.last_name }}
+                    </a>
                 </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <p style="text-align: center; margin-top: 50px; font-size: 18px; color: #7f8c8d;">
-            No employees found. Please add one.
-        </p>
-    {% endif %}
-
+                <div>
+                    <a href="{% url 'employee_update' employee.pk %}"
+                       style="margin-right: 15px; color: #27ae60; text-decoration: none; padding: 5px 10px; border: 1px solid #27ae60; border-radius: 3px;">
+                       Edit Employee
+                    </a>
+                    <a href="{% url 'employee_delete' employee.pk %}"
+                       style="color: #c0392b; text-decoration: none; padding: 5px 10px; border: 1px solid #c0392b; border-radius: 3px;">
+                       Delete
+                    </a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+>>>>>>> 7fcf98190ac606f5a83a7d3aa733b6b1d40922f5
 </div>
 {% endblock %}
