@@ -9,7 +9,7 @@ class Employee(DateTimeModel):
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=30, blank=True, null=True)
     date_of_birth = models.DateField()
-    position = models.CharField(max_length=100)
+    post = models.CharField(max_length=100)
     department = models.CharField(max_length=100)
     start_date = models.DateField()
     date_created = models.DateTimeField(auto_now_add=True)
